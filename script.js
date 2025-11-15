@@ -1,6 +1,5 @@
 console.log('Welcome to Rock Paper Scissor Game');
-
-
+//defining moves
 let moves = {
     1: 'Rock',
     2: 'Paper',
@@ -10,7 +9,7 @@ let Human = 0;
 let AI = 0; 
 let Draw = 0;
 
-
+//function to get computer choice
 function getComputerChoice() {
     let randomNum = Math.random();
     if (randomNum < 0.34) return 'Rock';
@@ -18,17 +17,17 @@ function getComputerChoice() {
     else return 'Scissor';
 }
 
+//function to get user choice
 function getUserChoice() {
     const userchoice = parseInt(prompt('Enter your choice (1 for Rock, 2 for Paper, 3 for Scissor): '));
     
     if (!(userchoice in moves)) {
         console.log('Invalid Input');
         return null; 
-    }
-    
+    } 
     return moves[userchoice];
 }
-
+//function to determine winner
 function determineWinner(user_move, computer_move) {
     if (user_move == computer_move) {
         return 'Match Draw';
@@ -43,7 +42,7 @@ function determineWinner(user_move, computer_move) {
         return (user_move == 'Rock') ? 'You Win' : 'AI Wins';
     }
 }
-
+//function to update scores
 function updateScores(result) {
     if (result == 'You Win') {
         Human += 1;
@@ -60,7 +59,7 @@ function updateScores(result) {
     console.log('AI: ' + AI);
     console.log('Draws: ' + Draw);
 }
-
+//main game starts
 
 console.log('Available Moves:');
 for (const key in moves) {
@@ -70,7 +69,6 @@ for (const key in moves) {
 
 const k = parseInt(prompt('Enter number of rounds to play: '));
 
-
 for (let i = 0; i < k; i++) {
     console.log(`\n--- Round ${i + 1} ---`);
     
@@ -79,8 +77,7 @@ for (let i = 0; i < k; i++) {
     if (user_move === null) {
         console.log("Skipping this round due to invalid input.");
         continue; 
-    }
-    
+    }  
     const computer_move = getComputerChoice();
     
     console.log('Your choice is: ' + user_move);
